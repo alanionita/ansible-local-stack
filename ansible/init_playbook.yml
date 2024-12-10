@@ -11,6 +11,10 @@
      ansible.builtin.apt_repository:
       repo: 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main'
       state: present
+   - name: Vim - install
+     ansible.builtin.apt:
+       name: vim
+       state: present
    - name: Git - install
      ansible.builtin.apt:
        name: git
