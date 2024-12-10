@@ -1,0 +1,37 @@
+- name: setup_machine
+  hosts: my_local
+  become: true
+  tasks:
+   - name: APT keys - add all keys
+     args:
+       chdir: /home/nf/Documents/init_setup/ansible/scripts/
+     ansible.builtin.shell: 
+       sh ./add_keys.sh
+   - name: VS Codium - Add source repo
+     ansible.builtin.apt_repository:
+      repo: 'deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main'
+      state: present
+   - name: Git - install
+     ansible.builtin.apt:
+       name: git
+       state: present
+   - name: VS Codium - install
+     ansible.builtin.apt:
+       name: codium
+       state: present
+   - name: VS Codium Insiders - install
+     ansible.builtin.apt:
+       name: codium
+       state: present
+   - name: Prusa Slicer - install
+     ansible.builtin.apt:
+       name: prusa-slicer
+       state: present
+   - name: Volta - install
+     # FIX: not working, script doesn't add vars to path,
+        # Leaving task as install docs
+     ansible.builtin.shell:
+       curl https://get.volta.sh | bash
+
+
+
