@@ -15,6 +15,14 @@
      ansible.builtin.apt:
        name: git
        state: present
+   - name: Flatpak - install
+     ansible.builtin.apt:
+       name: flatpak
+       state: present 
+  #  # Enable if missing when `ansible-galaxy collection list`
+  #  - name: Ansible 'community-general' - install
+  #    ansible.builtin.shell:
+  #      ansible-galaxy collection install community.general
    - name: VS Codium - install
      ansible.builtin.apt:
        name: codium
@@ -32,6 +40,11 @@
         # Leaving task as install docs
      ansible.builtin.shell:
        curl https://get.volta.sh | bash
+   - name: FreeTube - install # Youtube alternative frontend
+     community.general.flatpak:
+       name: io.freetubeapp.FreeTube
+       state: present
+   
 
 
 
