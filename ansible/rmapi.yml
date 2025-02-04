@@ -5,7 +5,7 @@
   tasks:
     - name: rmapi - clone repo 
       git: 
-        repo: https://github.com/juruen/rmapi
+        repo: https://github.com/alanionita/rmapi
         dest: "{{dir}}" 
         clone: yes
         update: no
