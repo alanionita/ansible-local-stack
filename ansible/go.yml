@@ -1,0 +1,25 @@
+- name: Go Setup
+  hosts: my_local
+  vars:
+    version: 1.23.5
+  tasks:
+    - name: Go - Delete old installation
+      command: rm -rf /usr/local/go
+      become: true
+
+    - name: Go - Download go tar file
+      become: true
+      unarchive: 
+        src: https://go.dev/dl/go{{version}}.linux-amd64.tar.gz
+        dest: /usr/local
+        remote_src: yes
+
+    - name: Go - Add go binary path to ~/.profile
+      lineinfile:
+        path: ~/.profile
+        line: 'export PATH=$PATH:/usr/local/go/bin'
+        create: true
+        state: present
+ 
+    - name: Go - Source updated profile and test go version
+      shell: . ~/.profile && go version

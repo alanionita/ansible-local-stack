@@ -1,0 +1,19 @@
+- name: Remarkable Api Setup (go)
+  hosts: my_local
+  vars:
+    dir: ~/Documents/rmapi
+  tasks:
+    - name: rmapi - clone repo 
+      git: 
+        repo: https://github.com/juruen/rmapi
+        dest: "{{dir}}" 
+        clone: yes
+        update: no
+        single_branch: yes
+        version: master
+
+    - name: rmapi - install
+      command: . ~/.profile && chdir={{dir}} go install
+
+    - name: rmapi - update GOBIN
+      command: export PATH=$(go env GOPATH)/bin:$PATH
