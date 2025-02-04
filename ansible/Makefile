@@ -1,2 +1,2 @@
-ansible_init:
+init:
 	ansible-playbook -i inventory.ini init_playbook.yml

@@ -45,7 +45,7 @@
     - name: FreeTube - install # Youtube alternative frontend
       community.general.flatpak:
         name: io.freetubeapp.FreeTube
-        state: present
+        state: latest # always update
     - name: pip3 - install
       apt:
         name: python3-pip
@@ -54,7 +54,26 @@
       apt:
         name: fzf
         state: present
-
+    - name: RPI Imager - install
+      apt:
+        name: rpi-imager
+        state: present
+    - name: nmap - install
+      apt:
+        name: nmap
+        state: present
+    - name: sshpass - install
+      apt:
+        name: sshpass
+        state: present
+    - name: Okular - install
+      apt:
+        name: okular
+        state: present
+    - name: Chromium - install
+      apt:
+        name: chromium
+        state: present
 - name: Install scripts
   hosts: my_local
   become: true
