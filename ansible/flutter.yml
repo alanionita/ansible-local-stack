@@ -1,0 +1,68 @@
+- name: Flutter Development Setup
+  hosts: my_local
+  vars:
+    # Useful in case you want to uninstall the whole playbook later
+    state: present # or 'absent'
+  tasks:
+    - name: curl - install
+      apt:
+        name: curl
+        state: '{{state}}'
+    - name: git - install
+      apt:
+        name: git
+        state: '{{state}}'
+    - name: unzip - install
+      apt:
+        name: unzip
+        state: '{{state}}'
+    - name: xz-utils - install
+      apt:
+        name: xz-utils
+        state: '{{state}}'
+    - name: zip - install
+      apt:
+        name: zip
+        state: '{{state}}'
+    - name: libglu1-mesa - install
+      apt:
+        name: libglu1-mesa
+        state: '{{state}}'
+    - name: clang - install
+      become: true
+      apt:
+        name: clang
+        state: '{{state}}'
+    - name: cmake - install
+      become: true
+      apt:
+        name: cmake
+        state: '{{state}}'
+    - name: ninja-build - install
+      become: true
+      apt:
+        name: ninja-build
+        state: '{{state}}'
+    - name: pkg-config - install
+      apt:
+        name: pkg-config
+        state: '{{state}}'
+    - name: libglu1-mesa - install
+      apt:
+        name: libglu1-mesa
+        state: '{{state}}'
+    - name: libgtk-3-dev - install
+      become: true
+      apt:
+        name: libgtk-3-dev
+        state: '{{state}}'
+    - name: liblzma-dev - install
+      become: true
+      apt:
+        name: liblzma-dev
+        state: '{{state}}'
+    - name: libstdc++-12-dev - install
+      become: true
+      apt:
+        name: libstdc++-12-dev
+        state: '{{state}}'
