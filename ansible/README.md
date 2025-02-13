@@ -20,7 +20,7 @@ Runtime uses Makefile commands
 > Run playbook
 
 ```shell
-make ansible_init
+make install play={name_of_play}
 
 ```
 

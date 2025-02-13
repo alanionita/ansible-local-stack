@@ -2,14 +2,6 @@
   hosts: my_local
   become: true
   tasks:
-    - name: APT keys - add all keys
-      args:
-        chdir: /home/nf/Documents/init_setup/ansible/scripts/
-      shell: sh ./add_keys.sh
-    - name: VS Codium - Add source repo
-      apt_repository:
-        repo: "deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main"
-        state: present
     - name: Vim - install
       apt:
         name: vim
@@ -74,6 +66,8 @@
       apt:
         name: chromium
         state: present
+
+# TODO: create .yml for the below
 - name: Install scripts
   hosts: my_local
   become: true
