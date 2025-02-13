@@ -31,13 +31,11 @@ conda create --name ansible
 
 Enabling 
 
-pre: Initialise conda if it's turned off as per above config instruction
-
 ```
 conda activate ansible
 ```
 
-3. Install Ansible core within that env
+3. Install ansible-core
 
 > Minimal version of Ansible, but the playbooks here don't use Galaxy modules
 
@@ -45,6 +43,12 @@ conda activate ansible
 python3 -m pip install --user ansible-core
 
 ```
+
+4. Makefile config
+
+Update the `ANSIBLE_ENV` within the Makefile to your names Ansible environment
+
+Default is "ansible"
 
 ## Run 
 
@@ -54,9 +58,7 @@ Runtime uses Makefile commands
 
 Each playbook can be passed in using `play` env variable. 
 
-eg. play="go" -> running the go.yml playbook
-
-1. Check available playbook
+1. List available playbooks
 
 ```shell
 make list
@@ -77,3 +79,7 @@ make run play={name_of_play}
 
 Alan Ionita
 
+
+## License
+
+GNU Affero General Public License (AGPL)
