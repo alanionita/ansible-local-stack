@@ -1,0 +1,6 @@
+- name: Debuging make and ansible setup
+  hosts: my_local
+  tasks:
+  - name: Echo test
+    debug: 
+      msg: echo "test"
