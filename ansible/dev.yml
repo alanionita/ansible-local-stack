@@ -1,0 +1,18 @@
+- name: Install dev apps
+  hosts: my_local
+  tasks:
+    - name: Postman - download
+      become: true
+      unarchive: 
+        src: https://dl.pstmn.io/download/latest/linux64
+        dest: /usr/bin
+        remote_src: yes
+    - name: Postman - Add binary path to ~/.profile
+      lineinfile:
+        path: ~/.profile
+        line: 'export PATH="$PATH:/usr/bin/Postman"'
+        create: true
+        state: present
+
+    - name: Postman - Source updated profile and test Postman
+      shell: . ~/.profile && Postman
