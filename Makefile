@@ -1,4 +1,3 @@
-ANSIBLE_ENV="ansible"
 
 run:
 	. $$(conda info --base)/etc/profile.d/conda.sh && \
@@ -7,3 +6,7 @@ run:
 
 list:
 	chdir ansible && echo "***************************** \\n**** Available Playbooks ****\\n*****************************" && ls | grep ".yml"
+
+run-wo-conda:
+	chdir ./ansible && \
+	ansible-playbook -i inventory.ini "$(play).yml"
