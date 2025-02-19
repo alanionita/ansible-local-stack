@@ -1,0 +1,68 @@
+- name: Docker - install
+  hosts: my_local
+  vars:
+    my_user: null # Enter your user
+  tasks:
+    - name: Docker - apt-transport-https install
+      become: true
+      apt:
+        name: apt-transport-https
+        state: present
+    - name: Docker - software-properties-common install
+      become: true
+      apt:
+        name: software-properties-common
+        state: present
+    - name: Docker - add gpg key
+      become: true
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        state: present
+    - name: Docker - add apt repo
+      become: true
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+        state: present
+    - name: Docker - Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
+        cache_valid_time: 86400 #One day
+    - name: Docker - docker-ce install
+      become: true
+      apt:
+        name: docker-ce
+        state: present
+    - name: Docker - docker-ce-cli install
+      become: true
+      apt:
+        name: docker-ce-cli
+        state: present
+    - name: Docker - containerd.io install
+      become: true
+      apt:
+        name: containerd.io
+        state: present
+    - name: Docker - test
+      debug: 
+        msg: echo $(docker --version)
+    - name: Docker - create user group
+      become: true 
+      group:
+        name: docker
+        state: present
+
+    - name: Docker - add user
+      become: true
+      user:
+        name: "{{my_user}}"
+        group: docker
+      
+    - name: Docker - update group
+      command: newgrp docker
+
+    - name: Docker - hello world
+      become: true
+      debug: 
+        msg: docker run hello-world | echo -
