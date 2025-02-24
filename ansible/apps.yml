@@ -18,19 +18,6 @@
       apt:
         name: flatpak
         state: present
-    # TODO: test if this works with ansible-core since it doesn't support ansible-galaxy
-    #  # Enable if missing when `ansible-galaxy collection list`
-    #  - name: Ansible 'community-general' - install
-    #    shell:
-    #      ansible-galaxy collection install community.general
-    - name: VS Codium - install
-      apt:
-        name: codium
-        state: present
-    - name: VS Codium Insiders - install
-      apt:
-        name: codium
-        state: present
     - name: Prusa Slicer - install
       apt:
         name: prusa-slicer
@@ -66,4 +53,8 @@
     - name: Chromium - install
       apt:
         name: chromium
+        state: present
+    - name: tmux - install
+      apt:
+        name: tmux
         state: present
