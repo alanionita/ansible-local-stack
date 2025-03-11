@@ -16,3 +16,9 @@
 
     - name: Postman - Source updated profile and test Postman
       shell: . ~/.profile && Postman
+
+    - name: Postgress - Install
+      become: true
+      apt: 
+        name: postgresql
+        state: latest
