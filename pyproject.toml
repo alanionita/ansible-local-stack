@@ -1,0 +1,9 @@
+[project]
+name = "init-setup"
+version = "0.1.0"
+description = "Ansible library to automate machine setup"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ansible>=11.4.0",
+]

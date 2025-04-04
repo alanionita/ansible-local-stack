@@ -16,39 +16,15 @@ By using this paradigm, we agree to stop installing things manually, add the *ne
 
 Review [Ansible docs](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-and-upgrading-ansible-with-pip) for updates on docs
 
-1. Run the miniconda install script
+1. Install uv
 
-`sh inst_miniconda.sh`
+`curl -LsSf https://astral.sh/uv/install.sh | sh`
 
-config: disable conda from auto enabling
+2. sync uv 
 
+Within the project
 
-2. Create a new conda env for Ansible and enable env
-
-```
-conda create --name ansible
-```
-
-Enabling 
-
-```
-conda activate ansible
-```
-
-3. Install ansible-core
-
-> Minimal version of Ansible, but the playbooks here don't use Galaxy modules
-
-```shell
-python3 -m pip install --user ansible-core
-
-```
-
-4. Makefile config
-
-Update the `ANSIBLE_ENV` within the Makefile to your names Ansible environment
-
-Default is "ansible"
+`uv sync`
 
 ## Run 
 
